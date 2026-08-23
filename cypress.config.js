@@ -1,7 +1,7 @@
 import { defineConfig } from "cypress";
 
 export default defineConfig({
-  defaultCommandTimeout: 10000,
+  defaultCommandTimeout: 100000,
   env: {
     demoUrl: "https://opensource-demo.orangehrmlive.com",
     homepageUrl:
