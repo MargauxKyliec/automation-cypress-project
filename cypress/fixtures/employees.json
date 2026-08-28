@@ -1,5 +1,12 @@
 {
-  "firstName": "John",
-  "middleName": "Cruz",
-  "lastName": "Doe"
+  "addEmployee": {
+    "firstName": "John",
+    "middleName": "Cruz",
+    "lastName": "Doe"
+  },
+  "editEmployee": {
+    "firstName": "Jane",
+    "middleName": "Marie",
+    "lastName": "Smith"
+  }
 }
