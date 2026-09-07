@@ -1,4 +1,3 @@
 # automation-engineering-projects
-creating automation scripts
-testinging
+creating cypress automation scripts
 
