@@ -1,4 +1,5 @@
 import { global } from "../../support/elements/global";
+import { pim } from "../../support/elements/pim";
 import { DemoLogin } from "../../support/helpers/demoLogin";
 import { employeeHelpers } from "../../support/helpers/employeeHelpers";
 
@@ -9,21 +10,15 @@ describe("Edit Employee", () => {
     cy.fixture("employees").then((employee) => {
       //Login
       DemoLogin();
-      //Navigate to PIM and Add Employee
-      cy.contains("span", "PIM").click();
+      //Navigate to PIM and create test Employee
+      pim.pimMenu().click();
       cy.contains("h6", "PIM").should("be.visible");
       cy.contains("button", "Add").click();
       cy.contains("h6", "Add Employee").should("be.visible");
 
-      cy.get("input[placeholder='First Name']").type(
-        employee.addEmployee.firstName,
-      );
-      cy.get("input[placeholder='Middle Name']").type(
-        employee.addEmployee.middleName,
-      );
-      cy.get("input[placeholder='Last Name']").type(
-        employee.addEmployee.lastName,
-      );
+      pim.firstNameInput().type(employee.addEmployee.firstName);
+      pim.middleNameInput().type(employee.addEmployee.middleName);
+      pim.lastNameInput().type(employee.addEmployee.lastName);
 
       global.employeeIdInput().clear().type(employeeId);
       cy.contains("button", "Save").click();
@@ -52,28 +47,15 @@ describe("Edit Employee", () => {
 
       // Verify the employee details are displayed correctly
       cy.contains("h6", "Personal Details").should("be.visible");
-      cy.get("input[placeholder='First Name']").should(
-        "have.value",
-        employee.addEmployee.firstName,
-      );
-      cy.get("input[placeholder='Middle Name']").should(
-        "have.value",
-        employee.addEmployee.middleName,
-      );
-      cy.get("input[placeholder='Last Name']").should(
-        "have.value",
-        employee.addEmployee.lastName,
-      );
+      pim.firstNameInput().should("have.value", employee.addEmployee.firstName);
+      pim
+        .middleNameInput()
+        .should("have.value", employee.addEmployee.middleName);
+      pim.lastNameInput().should("have.value", employee.addEmployee.lastName);
       // Edit Employee Details
-      cy.get("input[placeholder='First Name']")
-        .clear()
-        .type(employee.editEmployee.firstName);
-      cy.get("input[placeholder='Middle Name']")
-        .clear()
-        .type(employee.editEmployee.middleName);
-      cy.get("input[placeholder='Last Name']")
-        .clear()
-        .type(employee.editEmployee.lastName);
+      pim.firstNameInput().clear().type(employee.editEmployee.firstName);
+      pim.middleNameInput().clear().type(employee.editEmployee.middleName);
+      pim.lastNameInput().clear().type(employee.editEmployee.lastName);
       cy.contains("button", "Save").click();
       //Verify the changes are saved successfully
       cy.contains("a", "Employee List").click();
