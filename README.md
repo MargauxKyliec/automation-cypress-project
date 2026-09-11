@@ -25,7 +25,7 @@ An End-to-end test automation suite built with [Cypress](https://www.cypress.io/
 3. Configure environment variables by creating a `cypress.env.json` file in the project root:
    ```json
    {
-     "email": "your-email@example.com",
+     "username": "your-username",
      "password": "your-password"
    }
    ```
