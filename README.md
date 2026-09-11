@@ -1,4 +1,4 @@
-# automation-engineering-projects
+# automation-engineering-project
 
 An End-to-end test automation suite built with [Cypress](https://www.cypress.io/)
 
